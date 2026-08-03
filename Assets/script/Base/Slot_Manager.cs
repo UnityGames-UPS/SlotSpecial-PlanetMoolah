@@ -609,6 +609,13 @@ public class Slot_Manager : MonoBehaviour
 
     }
 
+    internal void UpdateBalanceDisplay(double newBalance)
+    {
+        currentBalance = newBalance;
+        uI_Controller.UpdatePlayerInfo(-1, newBalance);
+        CompareBalance();
+    }
+
     private bool CompareBalance()
     {
 

@@ -6525,6 +6525,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   socketManager: {fileID: 470718018}
   slotManager: {fileID: 1695218390}
+  jsFunctCalls: {fileID: 1022763964}
+  audioController: {fileID: 6984997773427038770}
   betPerLineText: {fileID: 91673311}
   totalBetText: {fileID: 22154272}
   totalLineText: {fileID: 741686421}
@@ -23368,9 +23370,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIWrapper: {fileID: 2055506908}
   CanvasScaler: {fileID: 188432398}
-  MatchWidth: 0
-  MatchHeight: 1
-  PortraitMatchWandH: 0.5
   transitionDuration: 0.2
   waitForRotation: 0.2
 --- !u!224 &2236184435350713715

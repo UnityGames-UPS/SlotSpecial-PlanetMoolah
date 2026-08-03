@@ -13,6 +13,8 @@ public class UI_Controller : MonoBehaviour
 
     [SerializeField] private SocketController socketManager;
     [SerializeField] private Slot_Manager slotManager;
+    [SerializeField] private JSFunctCalls jsFunctCalls;
+    [SerializeField] private AudioController audioController;
     [Header("Bet info")]
     [SerializeField] private TMP_Text betPerLineText;
     [SerializeField] private TMP_Text totalBetText;
@@ -116,6 +118,20 @@ public class UI_Controller : MonoBehaviour
     [SerializeField]
     internal GameObject RaycastBlocker;
     Tween balanceTween;
+
+    private void Awake()
+    {
+        if (jsFunctCalls != null)
+            jsFunctCalls.RegisterVisibilityListener(gameObject.name);
+    }
+
+    public void OnFocusChanged(string value)
+    {
+        bool focused = value == "1";
+        audioController?.SetMuteAll(focused ? !isSound : true);
+        socketManager?.HandleFocusChange(focused);
+    }
+
     private void Start()
     {
 

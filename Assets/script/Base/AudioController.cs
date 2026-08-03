@@ -27,14 +27,41 @@ public class AudioController : MonoBehaviour
     [SerializeField] private AudioClip megaWinClip;
     [SerializeField] private AudioClip bigWinClip;
 
+    private readonly List<AudioSource> allSources = new List<AudioSource>();
+    private readonly Dictionary<AudioSource, bool> preFocusMuteState = new Dictionary<AudioSource, bool>();
+    private bool isForceMuted = false;
+
     private void Awake()
     {
+        allSources.AddRange(new[] { bg_adudio, audioPlayer_wl, audioPlayer_button, audioPlayer_Spin,
+            audioPlayer_shoot_effect, audioPlayer_blast_effect, audioPlayer_pull_effect });
+
         playBgAudio();
         audioPlayer_blast_effect.clip = Blast_Audio;
         audioPlayer_pull_effect.clip = pull_Audio;
         audioPlayer_shoot_effect.clip = LaserShoot_Audio;
         //if (bg_adudio) bg_adudio.Play();
         //audioPlayer_button.clip = clips[clips.Length - 1];
+    }
+
+    internal void SetMuteAll(bool forceMute)
+    {
+        if (forceMute == isForceMuted) return;
+        isForceMuted = forceMute;
+
+        foreach (var source in allSources)
+        {
+            if (source == null) continue;
+            if (forceMute)
+            {
+                preFocusMuteState[source] = source.mute;
+                source.mute = true;
+            }
+            else
+            {
+                source.mute = preFocusMuteState.TryGetValue(source, out bool prevMuted) ? prevMuted : source.mute;
+            }
+        }
     }
 
     internal void PlayWLAudio()
@@ -94,28 +121,7 @@ public class AudioController : MonoBehaviour
 
     private void OnApplicationFocus(bool focus)
     {
-        if (!focus)
-        {
-
-            bg_adudio.Pause();
-            audioPlayer_wl.Pause();
-            audioPlayer_button.Pause();
-            audioPlayer_Spin.Pause();
-            audioPlayer_shoot_effect.Pause();
-            audioPlayer_pull_effect.Pause();
-            audioPlayer_blast_effect.Pause();
-        }
-        else
-        {
-            bg_adudio.UnPause();
-            audioPlayer_wl.UnPause();
-            audioPlayer_button.UnPause();
-            audioPlayer_Spin.UnPause();
-            audioPlayer_shoot_effect.UnPause();
-            audioPlayer_pull_effect.UnPause();
-            audioPlayer_blast_effect.UnPause();
-
-        }
+        SetMuteAll(!focus);
     }
 
 
