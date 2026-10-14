@@ -112,7 +112,7 @@ public class AudioController : MonoBehaviour
 
     }
 
-    internal void StopSpinAudio()
+    private void StopSpinAudio()
     {
 
         if (audioPlayer_Spin) audioPlayer_Spin.Stop();
@@ -166,7 +166,7 @@ public class AudioController : MonoBehaviour
         audioPlayer_wl.loop = false;
     }
 
-    internal void StopButtonAudio()
+    private void StopButtonAudio()
     {
 
         audioPlayer_button.Stop();
@@ -174,7 +174,7 @@ public class AudioController : MonoBehaviour
     }
 
 
-    internal void StopBgAudio()
+    private void StopBgAudio()
     {
         bg_adudio.Stop();
 

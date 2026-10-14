@@ -11,7 +11,7 @@ using Newtonsoft.Json.Linq;
 public class SocketController : MonoBehaviour
 {
 
-    internal SocketModel socketModel = new SocketModel();
+    private SocketModel socketModel = new SocketModel();
 
     [SerializeField] private Slot_Manager slotManager;
     [SerializeField] private UI_Controller uiManager;
@@ -23,7 +23,7 @@ public class SocketController : MonoBehaviour
 
     protected string SocketURI = null;
 
-    [SerializeField] internal JSFunctCalls JSManager;
+    [SerializeField] private JSFunctCalls JSManager;
 
     internal GameData InitialData = null;
     internal UiData UIData = null;
@@ -31,7 +31,7 @@ public class SocketController : MonoBehaviour
     internal Player PlayerData = null;
     internal Features FreeSpinInit = null;
     [SerializeField]
-    internal List<string> bonusdata = null;
+    private List<string> bonusdata = null;
 
 
     // TODO: PM to be changed
@@ -48,16 +48,16 @@ public class SocketController : MonoBehaviour
     // protected string gameID = "";
     protected string gameID = "SL-PML";
 
-    internal bool isLoading;
-    internal bool SetInit = false;
+    private bool isLoading;
+    private bool SetInit = false;
     private const int maxReconnectionAttempts = 6;
     private readonly TimeSpan reconnectionDelay = TimeSpan.FromSeconds(10);
 
     // internal Action<List<Symbol>, List<List<int>>, PlayerData> InitiateUI;
     internal Action ShowDisconnectionPopUp = null;
-    internal Action ShowAnotherDevicePopUp = null;
+    private Action ShowAnotherDevicePopUp = null;
 
-    internal bool isExit;
+    private bool isExit;
     private bool firstTime = true;
 
     private bool isConnected = false; //Back2 Start
@@ -159,7 +159,7 @@ public class SocketController : MonoBehaviour
 
     string myAuth = null;
 
-    internal void OpenSocket()
+    private void OpenSocket()
     {
         SocketOptions options = new SocketOptions(); //Back2 Start
         options.AutoConnect = false;
@@ -234,7 +234,7 @@ public class SocketController : MonoBehaviour
         isExiting = true;
         StartCoroutine(CloseSocket());
     }
-    internal IEnumerator CloseSocket() //Back2 Start
+    private IEnumerator CloseSocket() //Back2 Start
     {
         uiManager.RaycastBlocker.SetActive(true);
         ResetPingRoutine();
@@ -431,7 +431,7 @@ public class SocketController : MonoBehaviour
 
     // Connected event handler implementation
 
-    internal void InitRequest(string eventName)
+    private void InitRequest(string eventName)
     {
         var initmessage = new { Data = new { GameID = gameID }, id = "Auth" };
         SendData(eventName, initmessage);
@@ -586,7 +586,7 @@ public class SocketController : MonoBehaviour
         }
     }
 
-    internal void SendData(string eventName, object message = null)
+    private void SendData(string eventName, object message = null)
     {
 
         if (gameSocket == null || !gameSocket.IsOpen)

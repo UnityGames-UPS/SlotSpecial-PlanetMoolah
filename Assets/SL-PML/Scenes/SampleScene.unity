@@ -6478,7 +6478,7 @@ MonoBehaviour:
   JSManager: {fileID: 1022763964}
   bonusdata: []
   TestSocketURI: https://devrealtime.dingdinghouse.com
-  testToken: 52da61f3f6bc43d7b3839fe5a777e2a9
+  testToken: 4c61ab68416b45de81b698ed66a17a98
 --- !u!4 &470718019
 Transform:
   m_ObjectHideFlags: 0

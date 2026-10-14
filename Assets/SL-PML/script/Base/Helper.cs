@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-public class Helper
+internal class Helper
 {
 
     internal static int GetRandomIndexExcept(int length, int exception)
@@ -13,7 +13,7 @@ public class Helper
 
     }
 
-    internal static int[] ConvertSymbolPos(string pos)
+    private static int[] ConvertSymbolPos(string pos)
     {
         string[] values = pos.Split(',');
         int[] modifiedPos = new int[2];
@@ -39,7 +39,7 @@ public class Helper
 
     }
 
-    internal static List<string> Flatten2DList(List<List<string>> twoDList)
+    private static List<string> Flatten2DList(List<List<string>> twoDList)
     {
         List<string> flatList = new List<string>();
 
@@ -85,7 +85,7 @@ public class Helper
         return -1;
     }
 
-    internal static List<List<int>> FindEmitingSymbol(int lineIndex, List<int> position, List<List<int>> initialLines)
+    private static List<List<int>> FindEmitingSymbol(int lineIndex, List<int> position, List<List<int>> initialLines)
     {
         List<List<int>> resultList = new List<List<int>>();
         Debug.Log("ashu Test new:" + lineIndex);

@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class Payline_controller : MonoBehaviour
 {
-        [SerializeField] internal Image[] paylines;
-        [SerializeField] internal Color[] paylineColor;
+        [SerializeField] private Image[] paylines;
+        [SerializeField] private Color[] paylineColor;
 
         internal Color GeneratePayline(int id)
         {

@@ -114,7 +114,7 @@ public class UI_Controller : MonoBehaviour
     internal Action<bool, string> OnToggleAudio;
     internal Action<string> OnPlayButton;
     internal Action Exitgame;
-    internal bool isExit = false;
+    private bool isExit = false;
     [SerializeField]
     internal GameObject RaycastBlocker;
     Tween balanceTween;

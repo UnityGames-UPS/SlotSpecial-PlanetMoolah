@@ -38,7 +38,7 @@ public class Slot_Manager : MonoBehaviour
     [SerializeField] private int freeSpinCount;
 
     [SerializeField] private TMP_Text spinInfoText;
-    public bool isNewAdded;
+    [SerializeField] private bool isNewAdded;
 
     [SerializeField] private Coroutine freeSpinRoutine;
     [SerializeField] private Coroutine autoSpinCoroutine;

@@ -21,7 +21,7 @@ public class Reel_Controller : MonoBehaviour
 
     [SerializeField] private List<Slot_col> slot_matrix;
 
-    public Sprite empty;
+    [SerializeField] private Sprite empty;
 
     [Serializable]
     public class Slot_col
@@ -150,7 +150,7 @@ public class Reel_Controller : MonoBehaviour
 
     }
 
-    internal IEnumerator ReArrangeMatrix(List<Winning> iconsToFill)
+    private IEnumerator ReArrangeMatrix(List<Winning> iconsToFill)
     {
         for (int i = 0; i < slot_matrix.Count; i++)
         {
@@ -220,7 +220,7 @@ public class Reel_Controller : MonoBehaviour
 
         return result;
     }
-    internal IEnumerator ReArrangeMatrix(List<List<string>> iconsToFills)
+    private IEnumerator ReArrangeMatrix(List<List<string>> iconsToFills)
     {
         List<List<int>> iconsToFill = ConvertToInt(iconsToFills);
         for (int i = 0; i < slot_matrix.Count; i++)

@@ -93,7 +93,7 @@ public class UFO_controller : MonoBehaviour
         }
     }
 
-    internal void StopUfoVerticalMove()
+    private void StopUfoVerticalMove()
     {
 
         for (int i = 0; i < ufoList.Length; i++)
